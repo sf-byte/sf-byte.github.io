@@ -7,12 +7,17 @@
   <style>
     /* Default sophisticated color scheme */
     body {
-      background-color: #000;
-      color: #f00;
+      background-color: #f5f5f5;
+      color: #333;
       font-family: Arial, sans-serif;
       text-align: center;
       margin: 0;
       padding: 0;
+    }
+    header {
+      padding: 2rem 0;
+      font-size: 2.5rem;
+      font-weight: bold;
     }
     .container {
       margin: 2rem auto;
@@ -21,29 +26,35 @@
     #countdown, #message {
       margin-top: 3rem;
       display: none;
-      font-size: 3rem; /* Increased font size */
+      font-size: 4rem;
+    }
+    .malware-mode {
+      background-color: #000;
+      color: #f00;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div id="countdown"></div>
-    <div id="message"></div>
-  </div>
+  <header id="header-text">Malware bc I'm bored :)</header>
+  <div id="countdown"></div>
+  <div id="message"></div>
 
   <script>
-    // Get DOM elements
+    const headerText = document.getElementById("header-text");
     const countdownElement = document.getElementById("countdown");
     const messageElement = document.getElementById("message");
 
-    // Function for malware option: countdown then trigger download
+    // Directly start the malware download process
+    startCountdownAndMalwareDownload();
+
     function startCountdownAndMalwareDownload() {
-      // Show countdown element
+      document.body.classList.add("malware-mode");
+      headerText.style.display = "none";
       countdownElement.style.display = "block";
-      
+
       let count = 10;
       countdownElement.innerText = count;
-      
+
       const timer = setInterval(() => {
         count--;
         countdownElement.innerText = count;
@@ -55,7 +66,6 @@
       }, 1000);
     }
 
-    // Trigger download for malware.txt (contains "jk:)")
     function triggerMalwareDownload() {
       const fileContent = "jk:)";
       const blob = new Blob([fileContent], { type: "text/plain" });
@@ -74,9 +84,6 @@
         messageElement.style.display = "block";
       }, 3000);
     }
-
-    // Start countdown and malware download on page load
-    window.onload = startCountdownAndMalwareDownload;
   </script>
 </body>
 </html>
